@@ -1,0 +1,32 @@
+﻿<template>
+    <div>
+        <div>
+            <textarea v-model="urls" class="visible-lg-block" style="width: 100%; height: 200px"></textarea>
+        </div>
+        <div class="col-lg-5">
+            <button @click="getUrlInfo" class="btn btn-default">Get URL Info</button>
+        </div>
+        <div v-if="isTableShown">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Url</th>
+                        <th>Request Date</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="urlInfoItem in urlInfoData">
+                        <td><span v-if="urlInfoItem.isLoading">Loading...</span> {{ urlInfoItem.url }}</td>
+                        <td>{{ urlInfoItem.getLastRequestDate() }}</td>
+                        <td>{{ urlInfoItem.title }}</td>
+                        <td>{{ urlInfoItem.status }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>
+
+<script src="./urlinfo.ts"></script>

@@ -1,0 +1,24 @@
+﻿<template>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Url</th>
+                    <th>Last Request Date</th>
+                    <th>Last Title</th>
+                    <th>Last Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="urlInfoItem in urlInfoData" @click="showPlotForUrl(urlInfoItem.url)" class="navbar-link">
+                    <td><span v-if="urlInfoItem.isLoading">Loading...</span> {{ urlInfoItem.url }}</td>
+                    <td>{{ urlInfoItem.getLastRequestDate() }}</td>
+                    <td>{{ urlInfoItem.title }}</td>
+                    <td>{{ urlInfoItem.status }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</template>
+
+<script src="./urlstat.ts"></script>
